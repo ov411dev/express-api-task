@@ -20,7 +20,7 @@ Temp.getTemp = function (result) {
 
 // both mean and median temperature calculation by Date
 Temp.getTempByDate = function (date, result) {
-    sql.query("SELECT mean_temperature FROM climate WHERE LOCAL_DATE = ? ORDER BY 1", formatDate(date) + " 0:00", function (err, res) {
+    sql.query("SELECT climate.mean_temperature FROM (SELECT round(lng, 1) lng, round(lat, 1) lat FROM cities) tmp JOIN climate ON round(climate.lat, 1) = tmp.lat AND round(climate.lng, 1) = tmp.lng where local_date = ? ORDER BY 1", formatDate(date) + " 0:00", function (err, res) {
         temperature_count = res.length;
         var odd = temperature_count % 2;
         if(odd) {
