@@ -5,9 +5,6 @@ module.exports = function(app) {
   app.route('/temp')
     .get(temp.getTemp);
 
-  app.route('/temp/mean/:date')
-    .get(temp.getMeanTempByDate);
-
-  app.route('/temp/median/:date')
-    .get(temp.getMedianTempByDate);
+  app.route('/temp/:date')
+    .get(temp.getTempByDate);
 }

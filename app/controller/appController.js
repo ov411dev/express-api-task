@@ -17,17 +17,8 @@ exports.getTemp = function(req, res) { console.log(req.user);
   }
 };
 
-exports.getMeanTempByDate = function(req, res) {
-  Temp.getMeanTempByDate(req.params.date, function(err, task) {
-    if (err) {
-      res.send(err);
-    }
-    res.json(task);
-  });
-};
-
-exports.getMedianTempByDate = function(req, res) {
-  Temp.getMedianTempByDate(req.params.date, function(err, task) {
+exports.getTempByDate = function(req, res) {
+  Temp.getTempByDate(req.params.date, function(err, task) {
     if (err) {
       res.send(err);
     }
