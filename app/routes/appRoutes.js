@@ -1,21 +1,13 @@
 'use strict';
 module.exports = function(app) {
+  var temp = require('../controller/appController');
   // Routes
   app.route('/temp')
-    .get(function(req, res){
-      res.send({res:'ok'})
-    });
+    .get(temp.getTemp);
 
   app.route('/temp/mean/:date')
-    .get(function(req, res){
-      console.log(req.params.date)
-      res.send({res:'ok'})
-    });
+    .get(temp.getMeanTempByDate);
 
   app.route('/temp/median/:date')
-   .get(function(req, res){
-    console.log(req.params.date)
-    res.send({res:'ok'})
-  });
-
+    .get(temp.getMedianTempByDate);
 }

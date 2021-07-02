@@ -15,6 +15,8 @@ const mc = mysql.createConnection({
  
 // connect to database
 mc.connect();
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 var routes = require('./app/routes/appRoutes'); //importing route
 routes(app); //register the route

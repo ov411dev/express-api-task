@@ -12,3 +12,21 @@ exports.getTemp = function(req, res) {
       res.send(task);
     });
 };
+
+exports.getMeanTempByDate = function(req, res) {
+  Temp.getMeanTempByDate(req.params.date, function(err, task) {
+    if (err) {
+      res.send(err);
+    }
+    res.json(task);
+  });
+};
+
+exports.getMedianTempByDate = function(req, res) {
+  Temp.getMedianTempByDate(req.params.date, function(err, task) {
+    if (err) {
+      res.send(err);
+    }
+    res.json(task);
+  });
+};
